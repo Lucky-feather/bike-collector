@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/bikes/bike-index.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+  <h1>Bike List</h1>
+  <img src="{% static 'images/ebike.png' %}" alt="an e-bike" />
+  <img src="{% static 'images/gravel.jpeg' %}" alt="a gravel bike" />
+  <img src="{% static 'images/mountain-bike.jpeg' %}" alt="a mountain bike" />
+  <img src="{% static 'images/folding.jpeg' %}" alt="a folding bike" />
+</section>
+
+<section class="card-container">
+  {% for bike in bikes %}
+    <div class="card">
+      <div class="card-content">
+        <h2 class="card-title">{{ bike.type }}</h2>
+        <div class="card-img-container">
+          <img 
+            src="{% static 'images/mountain-bike.jpeg' %}" 
+            alt="a mountain bike"
+          >
+        </div>
+        <p>Description: {{ bike.description }} </p>
+        <p>Pros: {{bike.pros}}</p>
+        <p>Cons: {{ bike.cons }}</p>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}
