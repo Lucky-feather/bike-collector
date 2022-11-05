@@ -8,28 +8,20 @@ main {
 }
 
 main > section {
-  width: 100%;
-  padding: 10px 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  width: 100vh;
+  margin: 0;
 }
 
 .logo-container {
-  width: 100%
+  width: 100vh
+}
+
+.logo-container > img {
+  width: 100%;
 }
 
 .header-logo-container {
   display: none;
-}
-
-.logo-container {
-  max-width: 375px;
-}
-
-.cat-container {
-  width: 80%;
 }
 
 .login {
