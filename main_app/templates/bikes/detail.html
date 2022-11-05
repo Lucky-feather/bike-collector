@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet" 
+  type="text/css" 
+  href="{% static 'css/bikes/bike-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="bike-container">
+  <h2>{{ bike.type }}</h2>
+  <div class="bike-img">
+    <img 
+      src="{% static 'images/gravel.jpeg' %}" 
+      alt="a gravel bike"
+    >
+  </div>
+  <div class="bike-details">
+    <h3>Description: {{ bike.description }} </h3>
+    <h3>Pros: {{bike.pros}}</h3>
+    <h3>Cons: {{ bike.cons }}</h3>
+</div>
+  </div>
+</section>
+
+{% endblock %}
