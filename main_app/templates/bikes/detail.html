@@ -24,6 +24,10 @@
     <h3>Pros: {{bike.pros}}</h3>
     <h3>Cons: {{ bike.cons }}</h3>
 </div>
+<div class="bike-actions">
+  <a href="{% url 'bikes_update' bike.id %}" class="btn warn">Edit</a>
+  <a href="{% url 'bikes_delete' bike.id %}" class="btn danger">Delete</a>
+</div>
   </div>
 </section>
 

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Bike
 
 
@@ -21,3 +21,10 @@ class BikeCreate(CreateView):
   model = Bike
   fields = '__all__'
 
+class BikeUpdate(UpdateView) :
+  model = Bike
+  fields = ['type', 'description', 'pros', 'cons']
+
+class BikeDelete(DeleteView) :
+  model = Bike
+  success_url = '/bikes/'
