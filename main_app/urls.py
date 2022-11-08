@@ -10,4 +10,8 @@ urlpatterns = [
   path('bikes/<int:pk>/update/', views.BikeUpdate.as_view(), name='bikes_update'),
   path('bikes/<int:pk>/delete/', views.BikeDelete.as_view(), name='bikes_delete'),
   path('bikes/<int:bike_id>/add_maintenance/', views.add_maintenance, name='add_maintenance'),
+
+  path('gear/create/', views.GearCreate.as_view(), name='gear_create'),
+  path('gear/<int:pk>/', views.GearDetail.as_view(), name='gear_detail'),
+  path('gear/', views.GearList.as_view(), name='gear_index'),
 ]

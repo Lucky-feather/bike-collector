@@ -1,0 +1,33 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/gear/gear-index.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+  <h1>Gear</h1>
+
+</section>
+
+<section class="card-container">
+  {% for gear in gear_list %}
+  <div class="card">
+    <div class="card-bg"></div>
+    <a href="{% url 'gear_detail' gear.id %}">
+      <div class="card-content">
+        <img src="{{ gear.picture }}" alt="image of item">
+        <h2>{{ gear.item }}</h2>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</section>
+
+{% endblock %}

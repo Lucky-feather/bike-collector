@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/gear/gear-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+  
+<div class="card">
+  <div class="card-bg"></div>
+  <div class="card-content">
+    <h2>{{ <gear.item }}</h2>
+    <img src="{{ gear.URL }}" alt="image of item">
+  </div>
+</div>
+<a href="{% url 'gear_update' gear.id %}" class="btn warn">Edit</a>
+<a href="{% url 'gear_delete' gear.id %}" class="btn danger">Delete</a>
+
+{% endblock %}

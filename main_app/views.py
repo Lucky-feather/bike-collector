@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Bike
+from .models import Bike, Gear
 from .forms import MaintenanceForm
 
 
@@ -39,3 +40,13 @@ def add_maintenance(request, bike_id):
     new_maintenance.bike_id = bike_id
     new_maintenance.save()
   return redirect('bikes_detail', bike_id=bike_id)
+
+class GearCreate(CreateView) :
+  model = Gear
+  fields = '__all__'
+
+class GearList(ListView):
+  model = Gear
+
+class GearDetail(DetailView):
+  model = Gear
