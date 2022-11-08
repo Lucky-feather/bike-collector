@@ -23,12 +23,43 @@
     <h3>Description: {{ bike.description }} </h3>
     <h3>Pros: {{bike.pros}}</h3>
     <h3>Cons: {{ bike.cons }}</h3>
-</div>
-<div class="bike-actions">
-  <a href="{% url 'bikes_update' bike.id %}" class="btn warn">Edit</a>
-  <a href="{% url 'bikes_delete' bike.id %}" class="btn danger">Delete</a>
-</div>
+  </div>
+  <div class="bike-actions">
+    <a href="{% url 'bikes_update' bike.id %}" class="btn warn">Edit</a>
+    <a href="{% url 'bikes_delete' bike.id %}" class="btn danger">Delete</a>
   </div>
 </section>
+<div class="m-c">
+  <section class="upkeep">
+    <div class="subsection-title">
+      <h2>Maintenance</h2>
+    </div>
+    <h3>Add Work Done</h3>
+    <form
+      method="post" 
+      class="subsection-content"
+    >
+      {% csrf_token %}
+      {{ maintenance_form.as_p }}
+      <button type="submit" class="btn submit">Add
+
+      </button>
+    </form>
+    <h3>Maintenance History</h3>
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Work</th></tr>
+      </thead>
+      <tbody>
+        {% for maintenance in bike.maintenance_set.all %}
+          <tr>
+            <td>{{maintenance.date}}</td>
+            <td>{{maintenance.get_work_display}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
 
 {% endblock %}
