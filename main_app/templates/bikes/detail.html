@@ -3,10 +3,20 @@
 
 {% block head %}
 <link 
+  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
+  rel="stylesheet" 
+/>
+<link rel="stylesheet" href="{% static 'css/mcdp.css' %}">
+<script 
+  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
+>
+</script>
+<link 
   rel="stylesheet" 
   type="text/css" 
   href="{% static 'css/bikes/bike-detail.css' %}"
 />
+<script defer src="{% static 'js/bike-detail.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -36,13 +46,13 @@
     </div>
     <h3>Add Work Done</h3>
     <form
+      action="{ url 'add_maintenance' bike.id %}"
       method="post" 
       class="subsection-content"
     >
       {% csrf_token %}
       {{ maintenance_form.as_p }}
       <button type="submit" class="btn submit">Add
-
       </button>
     </form>
     <h3>Maintenance History</h3>

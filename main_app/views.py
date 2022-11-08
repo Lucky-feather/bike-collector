@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Bike
 from .forms import MaintenanceForm
@@ -31,3 +31,11 @@ class BikeUpdate(UpdateView) :
 class BikeDelete(DeleteView) :
   model = Bike
   success_url = '/bikes/'
+
+def add_maintenance(request, bike_id):
+  form = MaintenanceForm(request.POST)
+  if form.is_valid():
+    new_maintenance = form.save(commit=false)
+    new_maintenance.bike_id = bike_id
+    new_maintenance.save()
+  return redirect('bike_detail', bike_id=bike_id)
