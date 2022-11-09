@@ -46,7 +46,7 @@ class Maintenance(models.Model):
 # Add the gear model
 class Gear(models.Model):
   item = models.CharField(max_length=50)
-  picture = models.CharField(max_length=200, default='https://www.rei.com/media/86715e00-01f8-4fb6-aacf-8a30add086c0?size=784x588')
+  picture = models.CharField(max_length=200, default=' ')
 
 
   def __str__(self):

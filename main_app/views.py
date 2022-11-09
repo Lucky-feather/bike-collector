@@ -50,3 +50,11 @@ class GearList(ListView):
 
 class GearDetail(DetailView):
   model = Gear
+
+class GearUpdate(UpdateView):
+  model = Gear
+  fields = '__all__'
+
+class GearDelete(DeleteView):
+  model = Gear
+  success_url = '/gear/'
