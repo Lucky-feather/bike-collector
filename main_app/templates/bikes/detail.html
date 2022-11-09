@@ -112,7 +112,7 @@
             <a href="{% url 'gear_detail' gear.id %}">
               <p>{{ gear.item }}</p>
             </a>
-            <form action="" method="post">
+            <form action="{% url 'assoc_gear' bike.id gear.id %}" method="POST">
               {% csrf_token %}
               <button type="submit" class="btn submit">Give gear</button>
             </form>

@@ -59,3 +59,7 @@ class GearUpdate(UpdateView):
 class GearDelete(DeleteView):
   model = Gear
   success_url = '/gear/'
+
+def assoc_gear(request, bike_id, gear_id):
+  Bike.objects.get(id=bike_id).gear.add(gear_id)
+  return redirect('bikes_detail', bike_id=bike_id)
