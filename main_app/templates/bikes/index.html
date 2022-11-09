@@ -24,16 +24,16 @@
     <div class="card">
       <a href="{% url 'bikes_detail' bike.id %}">
         <div class="card-content">
-          <h2 class="card-title">{{ bike.type }}</h2>
+          <h2 class="card-title">{{ bike.get_type_display}}</h2>
           <div class="card-img-container">
             <img 
               src="{% static 'images/mountain-bike.jpeg' %}" 
               alt="a mountain bike"
             >
           </div>
+          <p>{{bike.color}} frame</p>
           <p>Description: {{ bike.description }} </p>
-          <p>Pros: {{bike.pros}}</p>
-          <p>Cons: {{ bike.cons }}</p>
+
         </div>
     </a>
     </div>

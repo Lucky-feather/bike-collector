@@ -27,7 +27,7 @@ class BikeCreate(CreateView):
 
 class BikeUpdate(UpdateView) :
   model = Bike
-  fields = ['type', 'description', 'pros', 'cons']
+  fields = ['type', 'color', 'description']
 
 class BikeDelete(DeleteView) :
   model = Bike

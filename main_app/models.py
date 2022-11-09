@@ -7,11 +7,34 @@ WORK = (
   ('G', 'Grease Chain'),
   ('C', 'Check Brakes')
 )
+
+TYPE = (
+  ('E', 'E-Bike'),
+  ('R', 'Road Bike'),
+  ('G', 'Gravel Bike'),
+  ('H', 'Hybrid Bike'),
+  ('M', 'Mountain Bike'),
+  ('T', 'Touring Bike'),
+  ('O', 'Other')
+)
+class Gear(models.Model):
+  item = models.CharField(max_length=50)
+  picture = models.CharField(max_length=200, default=' ')
+  def __str__(self):
+    return self.item
+  def get_absolute_url(self):
+    return reverse('gear_detail', kwargs={'pk': self.id})
+
 class Bike(models.Model):
-  type = models.CharField(max_length=100)
+  type = models.CharField(
+    max_length=1,
+    choices=TYPE,
+    default=TYPE[0][0]
+  )
+  color = models.CharField(max_length=20, default='')
   description = models.TextField(max_length=250)
-  pros = models.TextField(max_length=250)
-  cons = models.TextField(max_length=250)
+  gear = models.ManyToManyField(Gear)
+
   
   # def recent_work(self):
   #   return self.work_set.filter(
@@ -39,18 +62,8 @@ class Maintenance(models.Model):
   
   def __str__(self): 
     return f"{self.get_work_display()} on {self.date}"
-    
+
   class Meta:
     ordering = ['-date']
 
 # Add the gear model
-class Gear(models.Model):
-  item = models.CharField(max_length=50)
-  picture = models.CharField(max_length=200, default=' ')
-
-
-  def __str__(self):
-    return self.item
-
-  def get_absolute_url(self):
-    return reverse('gear_detail', kwargs={'pk': self.id})
