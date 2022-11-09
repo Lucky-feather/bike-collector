@@ -2,17 +2,14 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/landing.css' %}"/>
 {% endblock %}
 
 {% block content %}
-
+<div class='splash-layout'>
 <section class="logo-container">
-    <img src="{% static 'images/splash.png' %}" alt="a photo of parked bikes with text saying 'bike collector'" />
-  {% comment %} <img 
-    src="{% static 'images/logotype.svg' %}" 
-    alt="Text reads: Cat Collector"
-  /> {% endcomment %}
+  <img src="{% static 'images/shed.png' %}" alt="bike shed with bikes in front of it"
+  /> 
 </section>
 
 {% if not user.is_authenticated %}
@@ -25,5 +22,6 @@
       <button type="submit" class="btn submit">Login</button>
     </form>
   </section>
+</div>
 {% endif %}
 {% endblock %}
