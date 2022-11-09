@@ -17,9 +17,10 @@ def bikes_index(request):
 
 def bikes_detail(request, bike_id):
   bike = Bike.objects.get(id=bike_id)
+  gear_bike_doesnt_have = Gear.objects.exclude(id__in = bike.gear.all().values_list('id'))
   maintenance_form = MaintenanceForm()
   return render(request, 'bikes/detail.html', {
-    'bike' : bike, 'maintenance_form' : maintenance_form })
+    'bike' : bike, 'maintenance_form' : maintenance_form, 'gear': gear_bike_doesnt_have })
 
 class BikeCreate(CreateView):
   model = Bike
