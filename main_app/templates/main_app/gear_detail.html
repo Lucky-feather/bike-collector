@@ -14,8 +14,7 @@
 <div class="card">
   <div class="card-bg"></div>
   <div class="card-content">
-    <h2>{{ gear.item }}</h2>
-    <img src="{{ gear.picture }}" alt="image of item">
+    <h2>{{ gear.name }}</h2>
   </div>
 </div>
 <a href="{% url 'gear_update' gear.id %}" class="btn warn">Edit</a>
