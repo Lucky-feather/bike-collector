@@ -90,16 +90,16 @@
       <div class='subsection-title'>
         <h2>Added Gear</h2>
       </div>
-      <div class='subsection-content'>
+      <div class='subsection-content-2'>
         {% if bike.gear.count %}    
           {% for gear in bike.gear.all %}
           <div class ='gear-container'>
-            <div class='gear-img'
-            style="background-color: {{ bike.color }}">
-            <img src="{{ gear.picture }}" alt="photo of item"></div>
-            <a href="{% url 'gear_detail' gear.id %}">
-            <p>"{{ gear.item }}"</p>
-            </a>
+            <div class='gear-img'>
+              <img src="{{ gear.picture }}" alt="photo of item">
+              <a href="{% url 'gear_detail' gear.id %}">
+                <h4>"{{ gear.item }}"</h4>
+              </a>
+            </div>
           </div>
           {% endfor %}
         {% else %}
