@@ -126,11 +126,11 @@
               </div>
           {% endfor %}
         {% else %}
-      {% endif %}
-          <p class="all-gear">
-            Wow! This {{bike.name}} has all the available gear
-          </p>
+        <p class="all-gear">
+          Wow! This {{ bike.get_type_display}} has all the available gear
+        </p>
         {% endif %}
+      {% endif %}
 
     </div>
 </div>
