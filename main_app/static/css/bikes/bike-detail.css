@@ -54,21 +54,23 @@
   margin-right: 10px;
 }
 
-.unfed,
-.fed,
-.no-toys,
-.all-toys {
+.gear-img > img {
+  size: 30px;
+}
+
+.no-gear,
+.all-gear {
   margin: 0;
   font-weight: bold;
 }
 
-.unfed,
-.no-toys {
+
+.no-gear {
   color: var(--danger);
 }
 
-.fed,
-.all-toys {
+
+.all-gear {
   color: var(--submit);
 }
 
@@ -117,13 +119,13 @@
 }
 
 .upkeep h2,
-.toys h2 {
+.gear h2 {
   font-size: 3.2rem;
   margin: 0;
 }
 
 .upkeep h3,
-.toys h3 {
+.gear h3 {
   font-size: var(--font-xl);
   margin: 10px 0;
 }

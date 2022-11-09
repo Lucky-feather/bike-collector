@@ -6,8 +6,8 @@ urlpatterns = [
   path('about/', views.about, name='about'),
   path('accounts/signup/', views.signup, name='signup'),
 
-  path('bikes/', views.bikes_user_index, name='bikes_user_index'),
-  path('bikes/mybikes', views.bikes_index, name='bikes_index'),
+  path('bikes/mybikes', views.bikes_user_index, name='bikes_user_index'),
+  path('bikes/', views.bikes_index, name='bikes_index'),
   path('bikes/<int:bike_id>/', views.bikes_detail, name='bikes_detail'),
   path('bikes/create/', views.BikeCreate.as_view(), name='bikes_create'),
   path('bikes/<int:pk>/update/', views.BikeUpdate.as_view(), name='bikes_update'),
