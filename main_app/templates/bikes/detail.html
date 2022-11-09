@@ -49,6 +49,11 @@
       method="POST" 
       class="subsection-content"
     >
+    {% if bike.recent_work %}
+      <p class="recent"> This bike should be ready to ride!</p>
+    {% else %} 
+      <p class="not-recent">This {{ bike.get_type_display }} hasn't had maintenance for a while, look it over before riding.</p>
+    {% endif %}
       {% csrf_token %}
       {{ maintenance_form.as_p }}
       <button type="submit" class="btn submit">Add
@@ -75,6 +80,27 @@
     </div>
   {% endif %}
   </section>
+  <section class='gear'>
+    <div class='subsection-title'>
+      <h2>Added Gear</h2>
+    </div>
+    <div class='subsection-content'>
+      {% if bike.gear.count %}    
+        {% for gear in bike.gear.all %}
+        <div class ='gear-container'>
+          <div class='gear-img'
+          style="background-color: {{ bike.color }}">
+          <img src="{{ gear.picture }}" alt="photo of item"></div>
+          <a href="{% url 'toys_detail' toy.id %}">
+          <p>A {{ gear.item }}</p>
+          </a>
+        </div>
+        {% endfor %}
+      {% else %}
+        <p class="no-gear">This {{ bike.get_type_display }} doesn't have any gear added 😞</p>
+      {% endif %}
+    </div>
+    <h3>Available Gear</h3>
 </div>
 
 {% endblock %}

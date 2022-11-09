@@ -23,7 +23,7 @@ def bikes_detail(request, bike_id):
 
 class BikeCreate(CreateView):
   model = Bike
-  fields = '__all__'
+  fields = ['type', 'color', 'description']
 
 class BikeUpdate(UpdateView) :
   model = Bike

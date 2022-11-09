@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 
 WORK = (
   ('T', 'Air Up Tires'),
@@ -19,7 +19,7 @@ TYPE = (
 )
 class Gear(models.Model):
   item = models.CharField(max_length=50)
-  picture = models.CharField(max_length=200, default=' ')
+  picture = models.CharField(max_length=200, default='paste link to an image of item ')
   def __str__(self):
     return self.item
   def get_absolute_url(self):
@@ -34,16 +34,15 @@ class Bike(models.Model):
   color = models.CharField(max_length=20, default='')
   description = models.TextField(max_length=250)
   gear = models.ManyToManyField(Gear)
-
   
-  # def recent_work(self):
-  #   return self.work_set.filter(
-  #     date=date.today()).count()
-# /for this above function, I want it to:
-# /check the date of the most recent work done
-# /compare it to the date 7 days prior to today
-# /see if the date of the work done is as recent or more recent.
 
+  def recent_work(self):
+    output = False
+    for num in range(0,31):
+      if(self.maintenance_set.filter(date=datetime.today()-timedelta(days=num)).count() > 0):
+        output = True
+    print(output)
+    return output
 
   def __str__(self):
     return self.type
@@ -66,4 +65,9 @@ class Maintenance(models.Model):
   class Meta:
     ordering = ['-date']
 
+
+# /for this above function, I want it to:
+# /check the date of the most recent work done
+# /compare it to the date 7 days prior to today
+# /see if the date of the work done is as recent or more recent.
 # Add the gear model
