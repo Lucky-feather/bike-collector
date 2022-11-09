@@ -21,18 +21,25 @@
     <div class="header-logo-container">
       <a href="/">
         {% comment %} <img 
-          src="{% static 'images/blue-bike-silouette.png' %}"
-          alt="image"
-        > {% endcomment %}
+          src="{% static 'images/blue-bike-square.png' %}"
+          alt="image"> {% endcomment %}
       </a>
     </div>
     <nav>
       <ul>
-        <li><a href="{% url 'bikes_index' %}">Bikes</a></li>
-        <li><a href="{% url 'gear_index' %}">Gear</a></li>
-        <li><a href="{% url 'bikes_create' %}">Add A Bike</a></li>
-        <li><a href="{% url 'gear_create' %}">Add Gear</a></li>
-        <li><a href="{% url 'about' %}">About</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'bikes_user_index' %}">My Bikes</li>
+          <li><a href="{% url 'bikes_index' %}">All Bikes</a></li>
+          <li><a href="{% url 'gear_index' %}">Gear</a></li>
+          <li><a href="{% url 'bikes_create' %}">Add A Bike</a></li>
+          <li><a href="{% url 'gear_create' %}">Add Gear</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'logout' %}">Log out</a></li>
+        {% else %}
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'home' %}">Login</a></li>
+          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
       </ul>
     </nav>
   </header>

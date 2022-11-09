@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
-from datetime import date, datetime, timedelta
+from datetime import datetime, timedelta
+from django.contrib.auth.models import User
 
 WORK = (
   ('T', 'Air Up Tires'),
@@ -34,7 +35,8 @@ class Bike(models.Model):
   color = models.CharField(max_length=20, default='')
   description = models.TextField(max_length=250)
   gear = models.ManyToManyField(Gear)
-  
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
   def recent_work(self):
     output = False
@@ -64,10 +66,3 @@ class Maintenance(models.Model):
 
   class Meta:
     ordering = ['-date']
-
-
-# /for this above function, I want it to:
-# /check the date of the most recent work done
-# /compare it to the date 7 days prior to today
-# /see if the date of the work done is as recent or more recent.
-# Add the gear model

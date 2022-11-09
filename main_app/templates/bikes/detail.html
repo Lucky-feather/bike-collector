@@ -22,7 +22,7 @@
 {% block content %}
 
 <section class="bike-container">
-  <h2>{{ bike.get_type_display }}</h2>
+  <h2>{{bike.color}} {{ bike.get_type_display}}</h2>
   <div class="bike-img">
     <img 
       src="{% static 'images/G.jpeg' %}" 
@@ -33,96 +33,104 @@
     <h3>{{bike.color}} frame</h3>
     <h3>Description: {{ bike.description }} </h3>
   </div>
-  <div class="bike-actions">
-    <a href="{% url 'bikes_update' bike.id %}" class="btn warn">Edit</a>
-    <a href="{% url 'bikes_delete' bike.id %}" class="btn danger">Delete</a>
-  </div>
-</section>
-<div class="m-c">
-  <section class="upkeep">
-    <div class="subsection-title">
-      <h2>Maintenance</h2>
-    </div>
-    <h3>Add Work Done</h3>
-    <form
-      action="{% url 'add_maintenance' bike.id %}"
-      method="POST" 
-      class="subsection-content"
-    >
-    {% if bike.recent_work %}
-      <p class="recent"> This bike should be ready to ride!</p>
-    {% else %} 
-      <p class="not-recent">This {{ bike.get_type_display }} hasn't had maintenance for a while, look it over before riding.</p>
-    {% endif %}
-      {% csrf_token %}
-      {{ maintenance_form.as_p }}
-      <button type="submit" class="btn submit">Add
-      </button>
-    </form>
-    <h3>Maintenance History</h3>
-    {% if bike.maintenance_set.all.count %}
-    <table>
-      <thead>
-        <tr><th>Date</th><th>Work</th></tr>
-      </thead>
-      <tbody>
-        {% for maintenance in bike.maintenance_set.all %}
-          <tr>
-            <td>{{maintenance.date}}</td>
-            <td>{{maintenance.get_work_display}}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  {% else %}
-		<div class="subsection-content">
-      <p>{{bike.type}} has no maintenance history</p>
+  
+  
+  {% if user == bike.user %}
+    <div class="bike-actions">
+      <a href="{% url 'bikes_update' bike.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'bikes_delete' bike.id %}" class="btn danger">Delete</a>
     </div>
   {% endif %}
   </section>
-  <section class='gear'>
-    <div class='subsection-title'>
-      <h2>Added Gear</h2>
-    </div>
-    <div class='subsection-content'>
-      {% if bike.gear.count %}    
-        {% for gear in bike.gear.all %}
-        <div class ='gear-container'>
-          <div class='gear-img'
-          style="background-color: {{ bike.color }}">
-          <img src="{{ gear.picture }}" alt="photo of item"></div>
-          <a href="{% url 'gear_detail' gear.id %}">
-          <p>"A {{ gear.item }}"</p>
-          </a>
-        </div>
-        {% endfor %}
-      {% else %}
-        <p class="no-gear">This {{ bike.get_type_display }} doesn't have any gear added</p>
+  <div class="m-c">
+    <section class="upkeep">
+      <div class="subsection-title">
+        <h2>Maintenance</h2>
+      </div>
+      {% if user == bike.user %}
+        <h3>Add Work Done</h3>
+        <form
+          action="{% url 'add_maintenance' bike.id %}"
+          method="POST" 
+          class="subsection-content"
+          >
+          {% csrf_token %}
+          {{ maintenance_form.as_p }}
+          <button type="submit" class="btn submit">Add
+          </button>
+        </form>
       {% endif %}
-    </div>
-    <h3>Available Gear</h3>
-    <div class="subsection-content">
-      {% if gear.count %}
-        {% for gear in gear.all %}
-          <div class="gear-container">
-            <div 
-              class="color-block"
-              style="background-color: {{ bike.color }}"
-            ></div>
+    {% if bike.recent_work %}
+      <h3 class="recent"> This bike should be ready to ride!</h3>
+      {% else %} 
+      <h3 class="not-recent">This {{ bike.get_type_display }} hasn't had maintenance for a while, look it over before riding.</h3>
+    {% endif %}
+      <h3>Maintenance History</h3>
+      {% if bike.maintenance_set.all.count %}
+      <table>
+        <thead>
+          <tr><th>Date</th><th>Work</th></tr>
+        </thead>
+        <tbody>
+          {% for maintenance in bike.maintenance_set.all %}
+            <tr>
+              <td>{{maintenance.date}}</td>
+              <td>{{maintenance.get_work_display}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <div class="subsection-content">
+        <p>This {{bike.get_type_display}} has no maintenance history</p>
+      </div>
+      {% endif %}
+    </section>
+    <section class='gear'>
+      <div class='subsection-title'>
+        <h2>Added Gear</h2>
+      </div>
+      <div class='subsection-content'>
+        {% if bike.gear.count %}    
+          {% for gear in bike.gear.all %}
+          <div class ='gear-container'>
+            <div class='gear-img'
+            style="background-color: {{ bike.color }}">
+            <img src="{{ gear.picture }}" alt="photo of item"></div>
             <a href="{% url 'gear_detail' gear.id %}">
-              <p>{{ gear.item }}</p>
+            <p>"{{ gear.item }}"</p>
             </a>
-            <form action="{% url 'assoc_gear' bike.id gear.id %}" method="POST">
-              {% csrf_token %}
-              <button type="submit" class="btn submit">Give gear</button>
-            </form>
           </div>
-        {% endfor %}
-      {% else %}
-        <p class="all-gear">
-          Wow! This {{bike.name}} has all the available gear
-        </p>
+          {% endfor %}
+        {% else %}
+          <p class="no-gear">This {{ bike.get_type_display }} doesn't have any gear added</p>
+        {% endif %}
+      </div>
+      {% if user == bike.user %}
+        <h3>Available Gear</h3>
+        <div class="subsection-content">
+          {% if gear.count %}
+            {% for gear in gear.all %}
+              <div class="gear-container">
+                <div 
+                  class="color-block"
+                  style="background-color: {{ bike.color }}"
+                ></div>
+                <a href="{% url 'gear_detail' gear.id %}">
+                  <p>{{ gear.item }}</p>
+                </a>
+                <form action="{% url 'assoc_gear' bike.id gear.id %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit" class="btn submit">Give gear</button>
+                </form>
+              </div>
+          {% endfor %}
+        {% else %}
       {% endif %}
+          <p class="all-gear">
+            Wow! This {{bike.name}} has all the available gear
+          </p>
+        {% endif %}
 
     </div>
 </div>
