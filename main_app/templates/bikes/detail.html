@@ -118,7 +118,7 @@
                 </div>                
                   <form action="{% url 'assoc_gear' bike.id gear.id %}" method="POST">
                   {% csrf_token %}
-                  <button type="submit" class="btn submit">add gear</button>
+                  <button type="submit" class="btn submit">add</button>
                 </form>
               </div>
           {% endfor %}

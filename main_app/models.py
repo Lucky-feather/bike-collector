@@ -16,11 +16,12 @@ TYPE = (
   ('H', 'Hybrid Bike'),
   ('M', 'Mountain Bike'),
   ('T', 'Touring Bike'),
-  ('O', 'Other')
+  ('O', 'Unique Bike')
 )
 class Gear(models.Model):
   item = models.CharField(max_length=50)
   picture = models.CharField(max_length=200, default='paste link to an image of item ')
+  details = models.CharField(max_length=200)
   def __str__(self):
     return self.item
   def get_absolute_url(self):
