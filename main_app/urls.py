@@ -20,5 +20,4 @@ urlpatterns = [
   path('gear/', views.GearList.as_view(), name='gear_index'),
   path('gear/<int:pk>/update/', views.GearUpdate.as_view(), name='gear_update'),
   path('gear/<int:pk>/delete/', views.GearDelete.as_view(), name='gear_delete'),
-
 ]

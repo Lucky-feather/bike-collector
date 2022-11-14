@@ -49,12 +49,12 @@
   color: var(--text-color);
 }
 
-.card h2 {
+.card > h2 {
   margin: 7px 0;
   font-size: var(--font-xl);
 }
 
-.card p {
+.card > p {
   margin: 0;
   font-size: var(--font-reg);
 }

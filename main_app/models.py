@@ -21,7 +21,7 @@ TYPE = (
 class Gear(models.Model):
   item = models.CharField(max_length=50)
   picture = models.CharField(max_length=200, default='paste link to an image of item ')
-  details = models.CharField(max_length=200)
+  details = models.CharField(max_length=200, default = 'write details here')
   def __str__(self):
     return self.item
   def get_absolute_url(self):

@@ -52,7 +52,7 @@ def add_maintenance(request, bike_id):
     new_maintenance.save()
   return redirect('bikes_detail', bike_id=bike_id)
 
-class GearCreate(CreateView) :
+class GearCreate(CreateView):
   model = Gear
   fields = '__all__'
 
