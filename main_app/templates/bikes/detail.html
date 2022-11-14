@@ -106,27 +106,25 @@
         {% endif %}
       </div>
       {% if user == bike.user %}
-        <h3>Available Gear</h3>
+        <h3>Add Some Gear:</h3>
         <div class="subsection-content">
           {% if gear.count %}
             {% for gear in gear.all %}
-              <div class="gear-container">
-                <div 
-                  class="color-block"
-                  style="background-color: {{ bike.color }}"
-                ></div>
-                <a href="{% url 'gear_detail' gear.id %}">
-                  <p>{{ gear.item }}</p>
-                </a>
-                <form action="{% url 'assoc_gear' bike.id gear.id %}" method="POST">
+              <div class="gear-container2">
+                <div class="gear-display">
+                  <a href="{% url 'gear_detail' gear.id %}">
+                    <p>{{ gear.item }}</p>
+                  </a>
+                </div>                
+                  <form action="{% url 'assoc_gear' bike.id gear.id %}" method="POST">
                   {% csrf_token %}
-                  <button type="submit" class="btn submit">Give gear</button>
+                  <button type="submit" class="btn submit">add gear</button>
                 </form>
               </div>
           {% endfor %}
         {% else %}
         <p class="all-gear">
-          Wow! This {{ bike.get_type_display}} has all the available gear
+          This {{ bike.get_type_display}} has all the available gear
         </p>
         {% endif %}
       {% endif %}
