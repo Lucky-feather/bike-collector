@@ -7,7 +7,7 @@
   <h1>Delete Bike?</h1>
   <img src="{% static 'images/gravel.jpeg' %}" alt="A gravel bike"/>
 </div>
-<h2>Are you sure you want to delete this {{ bike.type }}?</h2>
+<h2>Are you sure you want to delete this {{ bike.get_type_display}}?</h2>
 
 <form action="" method="POST" class="form">
   {% csrf_token %}
