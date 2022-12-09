@@ -1,0 +1,229 @@
+.bike-container {
+  padding: 35px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bike-img {
+  width: 75%;
+  max-width: 350px;
+}
+
+.usr-img {
+  width: 100%;
+  border-radius: var(--card-border-radius);
+}
+
+.bike-details {
+  width: 98%;
+}
+
+.bike-actions {
+  margin-top: 20px;
+}
+
+.m-c {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  align-items: center;
+}
+
+.subsection-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.subsection-content{ 
+  max-width: 80%;
+}
+
+.subsection-content-2 {
+  margin: 0 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 40%;
+}
+
+.gear {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+}
+
+.gear-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  width : 100%
+}
+
+.gear-container2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  width : 100%
+}
+.gear-img {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+}
+
+.gear-display {
+margin: 4%;
+width: 60%
+}
+
+.gear-img > img {
+  width: 80%;
+  object-fit: contain;
+}
+
+.no-gear,
+.all-gear {
+  margin: 0;
+  font-weight: bold;
+}
+
+
+.no-gear {
+  color: var(--danger);
+}
+
+
+.all-gear {
+  color: var(--submit);
+}
+
+.bike-details h1 {
+  font-size: var(--font-xxl);
+  margin: 15px 0 3px;
+}
+
+.bike-details h2 {
+  font-size: var(--font-xl);
+  margin: 0 0 10px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.bike-details h3 {
+  margin: 20px 0 10px;
+  font-size: var(--font-l);
+}
+
+.bike-details p {
+  font-size: var(--font-reg);
+  margin: 5px 0;
+}
+
+.m-c > section {
+  width: 80%;
+  min-width: 360px;
+  border: var(--borders);
+  border-radius: var(--card-border-radius);
+  padding: 10px;
+  box-shadow: var(--card-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.subsection-title img {
+  height: 42px;
+  margin-left: 8px;
+}
+
+.subsection-title img:first-of-type {
+  margin-left: 16px;
+}
+
+.upkeep h2,
+.gear h2 {
+  font-size: 3.2rem;
+  margin: 0;
+}
+
+.upkeep h3,
+.gear h3 {
+  font-size: var(--font-xl);
+  margin: 10px 0;
+}
+
+.subsection-content p,
+.subsection-content input,
+.subsection-content select {
+  font-size: var(--font-l);
+}
+
+.subsection-content input,
+.subsection-content select {
+  margin-left: 5px;
+  padding: 3px;
+}
+
+.upkeep table {
+  width: calc(100% - 16px);
+  text-align: left;
+  border-collapse: collapse;
+  margin: 0 8px;
+}
+
+.upkeep td {
+  padding: 8px 5px;
+  font-size: var(--font-reg);
+}
+
+.upkeep th {
+  font-size: var(--font-l);
+  padding: 5px 5px 0;
+  border-bottom: rgb(36, 116, 248) solid 2px;
+}
+
+.upkeep tr:nth-child(even) {
+  background-color: #f3f3fd;
+}
+
+#file-input {
+  overflow: hidden;
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+}
+
+#file-name {
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+
+  .m-c {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  .m-c > section {
+    width: 45%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .m-c {
+    padding: 0 40px;
+  }
+}
