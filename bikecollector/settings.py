@@ -133,7 +133,7 @@ LOGIN_REDIRECT_URL = 'bikes_index'
 
 LOGOUT_REDIRECT_URL = 'home'
 
-CSRF_TRUSTED_ORIGINS = ['http://*', 'https://*']
+# CSRF_TRUSTED_ORIGINS = ['http://*', 'https://*']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
